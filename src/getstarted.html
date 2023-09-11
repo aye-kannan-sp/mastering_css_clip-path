@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js"></script>
+    <style>
+      .rectangle {
+        width: 200px;
+        height: 100px;
+        background-color: orange;
+        clip-path: inset(0);
+      }
+      .star {
+        width: 300px;
+        height: 300px;
+        background-color: blue;
+        clip-path: polygon(
+          50% 0%,
+          61.8% 38.2%,
+          98.1% 38.2%,
+          68.4% 61.8%,
+          79.3% 95.1%,
+          50% 76.2%,
+          20.7% 95.1%,
+          31.6% 61.8%,
+          1.9% 38.2%,
+          38.2% 38.2%
+        );
+      }
+
+      @keyframes wave-animation {
+        0% {
+          clip-path: path('M 0,0 Q 100,100 200,0 T 400 0');
+        }
+        100% {
+          clip-path: path('M 0,0 Q 100,0 200,0 T 400 0');
+        }
+      }
+
+      .waves {
+        width: 400px;
+        height: 100px;
+        background-color: lightblue;
+        animation: wave-animation 3s infinite alternate;
+      }
+      .hover-reveal {
+        width: 200px;
+        height: 200px;
+        background-color: grey;
+        overflow: hidden;
+      }
+
+      .hover-inner {
+        width: 100%;
+        height: 100%;
+        background-color: pink;
+        clip-path: circle(0% at 50% 50%);
+        transition: clip-path 0.5s ease-in-out;
+      }
+
+      .hover-reveal:hover .hover-inner {
+        clip-path: circle(100% at 50% 50%);
+      }
+
+      .text-reveal {
+        width: 200px;
+        height: 50px;
+        background: linear-gradient(90deg, red 50%, transparent 50%);
+        background-clip: text;
+        color: transparent;
+        clip-path: inset(0 50% 0 0);
+        transition: clip-path 1s ease;
+      }
+
+      .text-reveal:hover {
+        clip-path: inset(0);
+      }
+
+      @keyframes rotate-box {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .rotating-box {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        animation: rotate-box 5s infinite linear;
+      }
+
+      .svg-clip {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        clip-path: path('M 0,0 L 200,0 L 200,100 Q 100,150 0,100 Z');
+      }
+
+      .animated-clip {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+        transition: clip-path 1s ease-in-out;
+      }
+
+      .animated-clip:hover {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+      }
+    </style>
+  </head>
+  <body class="p-4">
+    <div class="rectangle">Rectangle</div>
+    <div class="star">Star</div>
+    <div class="waves">Waves</div>
+    <div class="hover-reveal">
+      <div class="hover-inner">Hover Me</div>
+    </div>
+    <div class="text-reveal">Text Reveal</div>
+    <div class="rotating-box">Rotating</div>
+    <div class="svg-clip">SVG Clip</div>
+    <div class="animated-clip">Animated Clip</div>
+  </body>
+</html>
